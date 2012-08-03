@@ -14,8 +14,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec'
-  gem 'webrat'#, '0.7.1'
+  gem 'capybara', '1.1.2'
 end
 
 group :production do
