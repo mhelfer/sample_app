@@ -8,11 +8,16 @@ describe "Static pages" do
       visit '/pages/home'
       page.should have_selector('h1', :text => 'Home')
     end
-
-    it "should have the title 'Home'" do
+    
+    it "should have base title" do
       visit '/pages/home'
       page.should have_selector('title',
-                        :text => "Ruby on Rails Tutorial Sample App | Home")
+          :text => "Ruby on Rails Tutorial Sample App");
+    end
+
+    it "should not have the title 'Home'" do
+      visit '/pages/home'
+      page.should_not have_selector('title', :text => "| Home")
     end
   end
 
@@ -22,11 +27,16 @@ describe "Static pages" do
       visit '/pages/contact'
       page.should have_selector('h1', :text => 'Contact')
     end
+    
+    it "should have base title" do
+      visit '/pages/contact'
+      page.should have_selector('title',
+          :text => "Ruby on Rails Tutorial Sample App");
+    end
 
     it "should have the title 'Contact'" do
       visit '/pages/contact'
-      page.should have_selector('title',
-                        :text => "Ruby on Rails Tutorial Sample App | Contact")
+      page.should have_selector('title', :text => "| Contact")
     end
   end
 
@@ -36,11 +46,16 @@ describe "Static pages" do
       visit '/pages/about'
       page.should have_selector('h1', :text => 'About')
     end
+    
+    it "should have base title" do
+      visit '/pages/about'
+      page.should have_selector('title',
+          :text => "Ruby on Rails Tutorial Sample App");
+    end
 
     it "should have the title 'About'" do
       visit '/pages/about'
-      page.should have_selector('title',
-                    :text => "Ruby on Rails Tutorial Sample App | About")
+      page.should have_selector('title', :text => "| About")
     end
   end
   
@@ -51,10 +66,15 @@ describe "Static pages" do
       page.should have_selector('h1', :text => 'Help')
     end
     
-    it "should have the title 'Help'" do
+    it "should have base title" do
       visit '/pages/help'
       page.should have_selector('title',
-                    :text => "Ruby on Rails Tutorial Sample App | Help")
+          :text => "Ruby on Rails Tutorial Sample App");
+    end
+    
+    it "should have the title 'Help'" do
+      visit '/pages/help'
+      page.should have_selector('title', :text => "| Help")
     end
   end
 end
