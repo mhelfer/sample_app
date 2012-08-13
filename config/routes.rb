@@ -1,6 +1,7 @@
 SampleApp::Application.routes.draw do
   
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   
   # Page routes
   root to: 'pages#home'
@@ -10,6 +11,10 @@ SampleApp::Application.routes.draw do
   
   # User routes
   match '/signup', to: 'users#new'
+
+  # Session routes
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete # via: :delete means accept this via the HTTP DELETE
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
